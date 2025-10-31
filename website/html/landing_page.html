@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Undead Protocol : Landing Page</title>
+    <script type="module" src="../assets/js/auth/auth.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body id="bg_image">  
+
+    <div id="popUp">
+    </div>
+
+    <div id="welcome-message">
+    <h1>Welcome to the Undead Protocol</h1>
+    <p>Join the fight against the undead and save the human race!</p>
+        </div>
+    <div id="auth-forms" class="card">
+        <!-- Form Toggle -->
+        <div id="formToggle">
+            <input type="radio" id="loginToggle" name="authToggle" value="login" checked>
+            <label for="loginToggle">Log In</label>
+
+            <input type="radio" id="signupToggle" name="authToggle" value="signup">
+            <label for="signupToggle">Sign Up</label>
+        </div>
+
+        <!-- Signup Form -->
+        <form id="signupForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+
+                <label for="fisrtName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name"  required>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <ul id="signupFormMessage" class="form-message">
+                </ul>
+                <button type="submit" id="signupButton">Sign Up</button>
+
+        </form>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="username" placeholder="Username" required>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+            <ul id="loginFormMessage" class="form-message">
+                </ul>
+            <button type="submit" id="loginButton">Log In</button>
+        </form>
+    </div>
+</body>
+</html>

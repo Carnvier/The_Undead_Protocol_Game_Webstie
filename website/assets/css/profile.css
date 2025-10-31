@@ -1,0 +1,244 @@
+/* Profile Page Styling */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap');
+
+.profile-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    border: 2px solid #8b0000;
+}
+
+td{ 
+   text-align: center; 
+   color: #888;
+}
+
+.profile-container h2 {
+    text-align: center;
+    color: #ff0000;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6);
+    font-family: 'Nosifer', cursive;
+    letter-spacing: 4px;
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 60px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* Profile Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    background: rgba(139, 0, 0, 0.2);
+    border-radius: 15px;
+    border: 2px solid #8b0000;
+    margin-bottom: 40px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b0000, #ff0000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+}
+
+.avatar-icon {
+    font-size: 4rem;
+}
+
+.profile-info h3 {
+    color: #ff0000;
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+    font-family: 'Nosifer', cursive;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.profile-info p {
+    color: #ccc;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(139, 0, 0, 0.3));
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #8b0000;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+    border-color: #ff0000;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    color: #ff0000;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Recent Games Section */
+.recent-games {
+    margin-bottom: 40px;
+}
+
+.recent-games h3 {
+    color: #ff0000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Nosifer', cursive;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.games-table-wrapper {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 2px solid #8b0000;
+}
+
+.games-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(20, 20, 20, 0.9);
+}
+
+.games-table thead {
+    background: linear-gradient(135deg, #8b0000, #ff0000);
+}
+
+.games-table th {
+    padding: 15px;
+    text-align: left;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.games-table tbody tr {
+    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.games-table tbody tr:hover {
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.games-table td {
+    padding: 15px;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+/* Account Management */
+.account-management h3 {
+    color: #ff0000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Nosifer', cursive;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    flex: 1;
+    min-width: 200px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #8b0000, #ff0000);
+    color: white;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: linear-gradient(135deg, #ff0000, #ff4500);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.action-btn.danger {
+    background: linear-gradient(135deg, #4d0000, #8b0000);
+    border-color: #8b0000;
+}
+
+.action-btn.danger:hover {
+    background: linear-gradient(135deg, #8b0000, #ff0000);
+    border-color: #ff0000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,325 @@
+/* Game-specific styling */
+
+/* Full-height layout */
+html, body {
+    height: 100%;
+}
+
+/* Canvas covers the full viewport under overlays */
+canvas#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    background: transparent; /* no dulling overlay */
+    z-index: 2; /* above #bg_image::before overlay */
+}
+
+/* Header above canvas */
+header {
+    position: relative;
+    z-index: 6; /* above canvas */
+}
+
+/* HUD: right-side info panel */
+.hud {
+    position: fixed;
+    top: 5.5rem; /* below header */
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 400px; /* match content/section width */
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid #8b0000;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(139, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+    pointer-events: none; /* never block interactions */
+}
+
+.hud-item {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    font-size: 0.95rem;
+    line-height: 1.1;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.25);
+}
+
+/* Crosshair with central dot */
+.crosshair {
+      position: absolute;
+    z-index: 5;
+    top: 30%;
+    left: 50%;
+    width: 20px; /* Width of the crosshair */
+    height: 20px; /* Height of the crosshair */
+    background-color: transparent; /* Transparent background */
+    border: 2px solid white; /* Crosshair color */
+    border-radius: 50%; /* Make it circular */
+    transform: translate(-50%, -50%); /* Center the crosshair */
+    pointer-events: none;
+}
+
+.crosshair div {
+    position: absolute;
+    background: #ff0000;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+}
+
+.crosshair-line-top { top: -12px; left: 50%; width: 2px; height: 10px; transform: translateX(-50%); }
+.crosshair-line-bottom { bottom: -12px; left: 50%; width: 2px; height: 10px; transform: translateX(-50%); }
+.crosshair-line-left { left: -12px; top: 50%; width: 10px; height: 2px; transform: translateY(-50%); }
+.crosshair-line-right { right: -12px; top: 50%; width: 10px; height: 2px; transform: translateY(-50%); }
+
+/* Center dot to mark ray origin */
+.crosshair-dot { 
+    left: 50%; 
+    top: 50%; 
+    width: 4px; 
+    height: 4px; 
+    transform: translate(-50%, -50%); 
+    border-radius: 50%; 
+}
+
+/* Brief pulse effect when shooting */
+.crosshair.shooting .crosshair-dot { 
+    transform: translate(-50%, -50%) scale(1.4); 
+    transition: transform 100ms ease; 
+}
+
+/* Damage overlay */
+#damageOverlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(800px 600px at 50% 50%, rgba(139, 0, 0, 0.25) 0%, rgba(139,0,0,0.45) 55%, rgba(139,0,0,0.7) 100%);
+    mix-blend-mode: multiply;
+    opacity: 0;
+    transition: opacity 250ms ease;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Controls overlay */
+.controls-overlay {
+    position: fixed;
+    inset: 0;
+    display: none; /* toggled by JS */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 6;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(2px);
+}
+
+.controls-overlay h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #ff0000;
+    text-shadow: 0 0 24px rgba(255, 0, 0, 0.7);
+    font-family: 'Nosifer', cursive;
+}
+
+.control-section {
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #8b0000;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(139, 0, 0, 0.5);
+    margin: 1rem 0;
+    padding: 1.25rem 1.5rem;
+}
+
+.control-section h3 {
+    color: #ff5a5a;
+    margin-bottom: 0.75rem;
+    font-family: 'Creepster', cursive;
+}
+
+.control-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    color: #f0f0f0;
+}
+
+.control-key {
+    padding: 0.25rem 0.5rem;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    background: rgba(139,0,0,0.25);
+    font-weight: 700;
+}
+
+.control-description { opacity: 0.9; }
+
+.close-hint {
+    text-align: center;
+    margin-top: 0.75rem;
+    color: #ddd;
+    opacity: 0.9;
+}
+
+.control-tip {
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #ffcccc;
+}
+
+/* Tutorial overlay */
+.tutorial-overlay {
+    position: fixed;
+    inset: 0;
+    display: none; /* toggled by JS */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 7;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(2px);
+}
+
+.tutorial-content {
+    width: min(640px, 92vw);
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #8b0000;
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 40px rgba(139, 0, 0, 0.5);
+}
+
+.tutorial-title {
+    color: #ff0000;
+    font-family: 'Nosifer', cursive;
+    margin-bottom: 0.5rem;
+}
+
+.tutorial-text { color: #ddd; }
+
+.tutorial-progress {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.tutorial-progress .progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #ff0000;
+    background: transparent;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
+}
+
+.tutorial-progress .progress-dot.active {
+    background: #ff0000;
+}
+
+.tutorial-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.tutorial-btn {
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    border: 2px solid #ff0000;
+    background: linear-gradient(135deg, #8b0000 0%, #4d0000 100%);
+    color: #fff;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.tutorial-btn:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.35);
+}
+
+/* Game Over */
+.game-over {
+    position: fixed;
+    inset: 0;
+    display: none; /* toggled by JS */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 8;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(2px);
+    text-align: center;
+}
+
+.game-over h2 {
+    font-size: 2.25rem;
+    color: #ff0000;
+    text-shadow: 0 0 28px rgba(255, 0, 0, 0.75);
+    font-family: 'Nosifer', cursive;
+}
+
+.personal-best {
+    margin-top: 0.25rem;
+    color: #ffe08a;
+    font-weight: 800;
+    text-shadow: 0 0 16px rgba(255, 208, 0, 0.6);
+}
+
+.game-over-stats {
+    width: min(560px, 90vw);
+    margin-top: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(0,0,0,0.85);
+    border: 2px solid #8b0000;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(139, 0, 0, 0.5);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.stat-row:last-child { border-bottom: none; }
+
+.stat-label { color: #ccc; }
+.stat-value { font-weight: 800; color: #fff; }
+
+.button-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .hud {
+        top: 4.75rem;
+        right: 0.75rem;
+        width: 55vw;
+        gap: 0.25rem;
+        padding: 0.6rem 0.75rem;
+        max-height: calc(100vh - 6rem);
+    }
+
+    .hud-item { font-size: 0.85rem; }
+
+    .crosshair { width: 24px; height: 24px; }
+    .crosshair-line-top { top: -9px; height: 8px; }
+    .crosshair-line-bottom { bottom: -9px; height: 8px; }
+    .crosshair-line-left { left: -9px; width: 8px; }
+    .crosshair-line-right { right: -9px; width: 8px; }
+}

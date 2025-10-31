@@ -1,0 +1,190 @@
+/* Global reset and box sizing */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+}
+
+/* Body styling with background */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+#bg_image{
+    background-image: url("../images/bg_image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+#bg_image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+#bg_image > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Navigation bar styling */
+header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
+    padding: 1.5rem 3rem;
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+    border-bottom: 2px solid #8b0000;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ff0000;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+    font-family: 'Nosifer', cursive;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+header nav ul li a:hover {
+    color: #ff0000;
+    border-color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Main content area */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 150px);
+    padding: 2rem;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 3rem;
+    color: #ff0000;
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+    font-family: 'Nosifer', cursive;
+}
+
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 30px rgba(255, 0, 0, 0.7); }
+    50% { text-shadow: 0 0 50px rgba(255, 0, 0, 1); }
+}
+
+main > p {
+    font-size: 1.5rem;
+    color: #ddd;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Game options section */
+section {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 3rem 4rem;
+    border-radius: 15px;
+    border: 2px solid #8b0000;
+    box-shadow: 0 10px 40px rgba(139, 0, 0, 0.5);
+    min-width: 400px;
+}
+
+section h3 {
+    font-size: 2rem;
+    color: #ff0000;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Creepster', cursive;
+}
+
+section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+section ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #8b0000 0%, #4d0000 100%);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+section ul li a:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    main h2 {
+        font-size: 2rem;
+    }
+
+    section {
+        min-width: auto;
+        padding: 2rem;
+    }
+}

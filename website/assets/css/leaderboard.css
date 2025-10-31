@@ -1,0 +1,114 @@
+/* Leaderboard Page Styling */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap');
+
+.leaderboard-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    border: 2px solid #8b0000;
+}
+
+.leaderboard-container h2 {
+    text-align: center;
+    color: #ff0000;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6);
+    font-family: 'Nosifer', cursive;
+    letter-spacing: 4px;
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 60px rgba(255, 0, 0, 0.8);
+    }
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.leaderboard-table thead {
+    background: linear-gradient(135deg, #8b0000, #ff0000);
+}
+
+.leaderboard-table th {
+    padding: 15px;
+    text-align: left;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.leaderboard-table tbody tr {
+    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.leaderboard-table tbody tr:hover {
+    background: rgba(255, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+.leaderboard-table td {
+    padding: 15px;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.leaderboard-table tbody tr:nth-child(1) td:first-child {
+    color: gold;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.leaderboard-table tbody tr:nth-child(2) td:first-child {
+    color: silver;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.leaderboard-table tbody tr:nth-child(3) td:first-child {
+    color: #cd7f32;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.back-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #8b0000, #ff0000);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.back-btn:hover {
+    background: linear-gradient(135deg, #ff0000, #ff4500);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}

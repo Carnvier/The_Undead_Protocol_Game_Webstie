@@ -1,0 +1,167 @@
+#popUp{
+    background-color: rgba(255, 0, 0, 0.704);
+    color: rgb(216, 205, 205);
+    border: 3px solid rgb(90, 28, 28) ;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 50%;
+    position: absolute;
+    top: 70px;
+    left: 25%;
+    display: none;
+}
+
+/* Add zombie-themed fonts */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap');
+
+#welcome-message {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff0000;
+    margin-top: 40px;
+    font-size: 1.5rem;
+    font-family: 'Nosifer', cursive;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.9);
+    animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+#welcome-message h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#welcome-message p {
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
+    color: #ddd;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+
+.card {
+    background-color: rgba(17, 16, 16, 0.95);
+    background-image: url("../images/form_bg.jpg");
+    background-size: cover;
+    background-position:  center;
+    background-blend-mode: overlay;
+    padding: 50px;
+    width: 50%;
+    margin:auto;
+    color: white;
+    border-radius: 15px;
+    margin-top: 50px;
+    border: 3px solid #8b0000;
+    box-shadow: 0 0 40px rgba(139, 0, 0, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+label {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Form toggle buttons */
+#formToggle {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+#formToggle label {
+    padding: 15px 40px;
+    background: rgba(139, 0, 0, 0.3);
+    border: 2px solid #8b0000;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#formToggle label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+#formToggle label:hover {
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+#formToggle input[type="radio"] {
+    display: none;
+}
+
+#formToggle input[type="radio"]:checked + label {
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    border-color: #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+#formToggle label:hover::before {
+    left: 0;
+}
+
+.form-message {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(255, 106, 0);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    background: linear-gradient(135deg, #8b0000 0%, #4d0000 100%);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6);
+}

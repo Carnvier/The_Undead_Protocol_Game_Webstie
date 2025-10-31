@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/game.css">
+    <script type="module" src="../assets/js/game/main.js" defer></script>
+    <script type="module" src="../assets/js/base.js" defer></script>
+
+    <title>The Undead Protocol : Game</title>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+    <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+
+</head>
+<body id="bg_image">
+     <header>
+        <h1>The Undead Protocol</h1>
+        <nav>
+            <ul>
+                <li><a href="./lobby.html">Lobby</a></li>
+                <li><a href="./leaderboard.html">Leaderboard</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li><a href="./logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <button id="pauseBtn" class="pause-btn" aria-label="Pause">⏸</button>
+    <!-- Game Play Area -->
+    <canvas id="canvas"></canvas>
+
+    
+    <!-- Enhanced Crosshair -->
+    <div class="crosshair" id="crosshair">
+        <div class="crosshair-line-top"></div>
+        <div class="crosshair-line-bottom"></div>
+        <div class="crosshair-line-left"></div>
+        <div class="crosshair-line-right"></div>
+        <div class="crosshair-dot"></div>
+    </div>
+    <div id="damageOverlay" ></div>
+    <div class="hud">
+        <div class="hud-item" id="health">Health: 100</div>
+        <div class="hud-item" id="ammo">Ammo: 30</div>
+        <div class="hud-item" id="weapon">Weapon: Pistol</div>
+        <div class="hud-item" id="wave">Wave: 1</div>
+        <div class="hud-item" id="score">Score: 0</div>
+    </div>
+    <!-- Enhanced Controls Menu -->
+    <div class="controls-overlay" id="controlsOverlay">
+        <h2>⚔️ Game Controls ⚔️</h2>
+
+        <div class="control-section">
+            <h3>🏃 Movement</h3>
+            <div class="control-item">
+                <span class="control-key">W A S D</span>
+                <span class="control-description">Move Forward / Left / Backward / Right</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">Shift</span>
+                <span class="control-description">Sprint (Double Speed)</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">Mouse</span>
+                <span class="control-description">Look Around (360°)</span>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>🔫 Combat</h3>
+            <div class="control-item">
+                <span class="control-key">Left Click</span>
+                <span class="control-description">Shoot Weapon</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">R</span>
+                <span class="control-description">Reload Current Weapon</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">1 / 2 / 3</span>
+                <span class="control-description">Switch Weapons (Pistol / Shotgun / Rifle)</span>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>⚙️ Interface</h3>
+            <div class="control-item">
+                <span class="control-key">ESC</span>
+                <span class="control-description">Toggle This Menu</span>
+            </div>
+        </div>
+
+        <div class="control-tip">
+            💡 <strong>Pro Tip:</strong> Headshots deal extra damage! Aim for the head to conserve ammo.
+        </div>
+
+        <div class="close-hint">
+            Press ESC to close this menu and continue playing
+        </div>
+    </div>
+
+    <!-- First-Time Tutorial Overlay -->
+    <div class="tutorial-overlay" id="tutorialOverlay">
+        <div class="tutorial-content">
+            <h2 class="tutorial-title" id="tutorialTitle">Welcome to The Undead Protocol</h2>
+            <p class="tutorial-text" id="tutorialText">Survive waves of zombies in this intense FPS experience. Let's learn the basics!</p>
+
+            <div class="tutorial-progress" id="tutorialProgress">
+                <span class="progress-dot active"></span>
+                <span class="progress-dot"></span>
+                <span class="progress-dot"></span>
+                <span class="progress-dot"></span>
+            </div>
+
+            <div class="tutorial-buttons">
+                <button class="tutorial-btn tutorial-skip" id="skipTutorial">Skip Tutorial</button>
+                <button class="tutorial-btn tutorial-next" id="nextTutorial">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Game Over Screen -->
+    <div class="game-over" id="gameOverScreen">
+        <h2>Game Over</h2>
+
+        <!-- Personal Best Badge (hidden by default) -->
+        <div class="personal-best" id="personalBest" style="display: none;">
+            🏆 NEW PERSONAL BEST! 🏆
+        </div>
+
+        <!-- Detailed Stats -->
+        <div class="game-over-stats">
+            <div class="stat-row">
+                <span class="stat-label">Final Score:</span>
+                <span class="stat-value" id="finalScore">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Wave Reached:</span>
+                <span class="stat-value" id="finalWave">1</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Zombies Killed:</span>
+                <span class="stat-value" id="finalKills">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Accuracy:</span>
+                <span class="stat-value" id="finalAccuracy">0%</span>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button id="restartButton">🔄 Restart</button>
+            <button id="lobbyButton" onclick="window.location.href='lobby.html'">🏠 Lobby</button>
+            <button id="leaderboardButton" onclick="window.location.href='leaderboard.html'">🏆 Leaderboard</button>
+        </div>
+    </div>
+</body>
+</html>

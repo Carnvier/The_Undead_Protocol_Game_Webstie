@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Undead Protocol : LeaderBoard</title>
+    <script type="module" src="../assets/js/base.js" defer></script>
+    <script type="module" src="../assets/js/leaderboard.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/leaderboard.css">
+</head>
+<body id="bg_image">
+    <header>
+        <h1>The Undead Protocol</h1>
+        <nav>
+            <ul>
+                <li><a href="./lobby.html">Lobby</a></li>
+                <li><a href="./game.html">Play</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li><a href="./logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="leaderboard-container">
+        <h2>Top Survivors</h2>
+        <div class="table-wrapper">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Score</th>
+                        <th>Wave</th>
+                        <th>Kills</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <!-- Leaderboard entries will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        <button class="back-btn" onclick="window.location.href='lobby.html'">Back to Lobby</button>
+    </main>
+</body>
+</html>
